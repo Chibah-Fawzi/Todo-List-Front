@@ -6,12 +6,12 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Login from './components/Login'
 
 function App() {
-  var deployed_uri = "https://app-to-do-assessment.herokuapp.com"
-  // if (process.env.NODE_ENV === 'development') {
-  //   deployed_uri = 'http://localhost:8888'
-  // } else {
-  //   deployed_uri = "https://app-to-do-assessment.herokuapp.com"
-  // }
+  let deployed_uri
+  if (process.env.NODE_ENV === 'development') {
+    deployed_uri = 'http://localhost:8888'
+  } else {
+    deployed_uri = "https://app-to-do-assessment.herokuapp.com"
+  }
   // Data state handler
   const [data, setData] = useState([])
   const [addPost, setAddPost] = useState({
@@ -41,10 +41,10 @@ function App() {
     setLoading(true)
     setError(false)
 
-    axios.get("https://app-to-do-assessment.herokuapp.com/todos", headers)
+    axios.get(`${deployed_uri}/todos`, headers)
       .then(res => {
         setLoading(false)
-        setData(res?.data)
+        setData(res.data)
       })
       .catch(err => {
         console.log(err)
@@ -62,7 +62,7 @@ function App() {
     setError(false)
     setSuccess(false)
 
-    axios.post("https://app-to-do-assessment.herokuapp.com/todos", addPost, headers)
+    axios.post(`${deployed_uri}/todos`, addPost, headers)
       .then(res => {
         console.log(res.data)
         setPostLoading(false)
@@ -177,7 +177,7 @@ function App() {
                         > */}
             <ul className='todoList'>
               {!loading ?
-                [data].map((e, i) => {
+                data.map((e, i) => {
                   return (
                     <li key={i} className='checkboxWrapper'>
                       <div>
@@ -190,6 +190,7 @@ function App() {
                       <p>{e.description}</p>
                     </li>)
                 })
+
                 : <p>Loading data...</p>}
             </ul>
             {/* </div>

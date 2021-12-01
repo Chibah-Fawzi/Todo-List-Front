@@ -13,10 +13,12 @@ export default function Login(props) {
         const body = {
             email: e.target.email.value
         }
-        axios.post("https://app-to-do-assessment.herokuapp.com/login", body, headers)
+        axios.post(`${deployed_uri}/login`, body, headers)
             .then(res => {
                 cookies.save('access_token', res.data.token, { path: '/' });
-                // window.location.reload();
+                if (res.status === 400) {
+                    res.json('Email already exists')
+                }
             }
             ).catch(err => err)
     }
@@ -26,10 +28,12 @@ export default function Login(props) {
         const body = {
             email: e.target.email.value
         }
-        axios.post("https://app-to-do-assessment.herokuapp.com/signup", body, headers)
+        axios.post(`${deployed_uri}/signup`, body, headers)
             .then(res => {
                 cookies.save('access_token', res.data.token, { path: '/' });
-                // window.location.reload();
+                if (res.status === 400) {
+                    res.json('Email already exists')
+                }
             })
             .catch(err => err)
     }
