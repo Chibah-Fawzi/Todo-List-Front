@@ -6,7 +6,12 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Login from './components/Login'
 
 function App() {
-
+  let deployed_uri
+  if (process.env.NODE_ENV === 'development') {
+    deployed_uri = 'http://localhost:8888'
+  } else {
+    deployed_uri = process.env.DEPLOYED_URI
+  }
   // Data state handler
   const [data, setData] = useState([])
   const [addPost, setAddPost] = useState({
@@ -36,7 +41,7 @@ function App() {
     setLoading(true)
     setError(false)
 
-    axios.get(`${process.env.DEPLOYED_URI}/todos` || 'http://localhost:8888/todos', headers)
+    axios.get(`${deployed_uri}/todos`, headers)
       .then(res => {
         setLoading(false)
         setData(res.data)
@@ -57,7 +62,7 @@ function App() {
     setError(false)
     setSuccess(false)
 
-    axios.post(`${process.env.DEPLOYED_URI}/todos` || 'http://localhost:8888/todos', addPost, headers)
+    axios.post(`${deployed_uri}/todos`, addPost, headers)
       .then(res => {
         console.log(res.data)
         setPostLoading(false)
@@ -123,7 +128,7 @@ function App() {
 
   return (
     <div className="App">
-      {!token ? <Login /> :
+      {token ? <Login deployed_uri={deployed_uri} /> :
         <div className='container'>
           <h1>To do app</h1>
           <button onClick={(e) => handleToggle(e)}>Add a new task</button>
