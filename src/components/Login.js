@@ -16,7 +16,6 @@ export default function Login(props) {
         }
         axios.post(`${deployed_uri}/login`, body, headers)
             .then(res => {
-                console.log(res.data.token);
                 cookies.save('access_token', res.data.token, { path: '/' });
                 // window.location.reload();
             }
@@ -30,7 +29,6 @@ export default function Login(props) {
         }
         axios.post(`${deployed_uri}/signup`, body, headers)
             .then(res => {
-                console.log(res.data);
                 cookies.save('access_token', res.data.token, { path: '/' });
                 // window.location.reload();
             })
