@@ -177,7 +177,7 @@ function App() {
                         > */}
             <ul className='todoList'>
               {!loading ?
-                data.map((e, i) => {
+                [data].map((e, i) => {
                   return (
                     <li key={i} className='checkboxWrapper'>
                       <div>
