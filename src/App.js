@@ -87,7 +87,7 @@ function App() {
   }
 
   const sendMail = () => {
-    if (data.data != new Date().toISOString().slice(0, 10)) {
+    if (data.data !== new Date().toISOString().slice(0, 10)) {
       console.log(new Date().toISOString().slice(0, 10))
     }
   }

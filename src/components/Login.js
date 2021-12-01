@@ -12,7 +12,7 @@ export default function Login() {
         const body = {
             email: e.target.email.value
         }
-        axios.get(`${process.env.DEPLOYED_URI}/login` || 'http://localhost:8888/login', headers)
+        axios.get(`${process.env.DEPLOYED_URI}/login` || 'http://localhost:8888/login', body, headers)
             .then(res => {
                 console.log(res.data);
                 cookies.save('access_token', res.data.token, { path: '/' });
@@ -25,9 +25,9 @@ export default function Login() {
         const body = {
             email: e.target.email.value
         }
-        axios.get(`${process.env.DEPLOYED_URI}/signup` || 'http://localhost:8888/signup', headers)
-            .then(res => cookies.set('access_token', res.data)
-            ).catch(err => err)
+        axios.get(`${process.env.DEPLOYED_URI}/signup` || 'http://localhost:8888/signup', body, headers)
+            .then(res => { cookies.set('access_token', res.data.token) })
+            .catch(err => err)
     }
     return (
         <div className='loginWrapper'>
