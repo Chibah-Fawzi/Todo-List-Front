@@ -6,6 +6,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Login from './components/Login'
 
 function App() {
+
   let deployed_uri
   if (process.env.NODE_ENV === 'development') {
     deployed_uri = 'http://localhost:8888'
