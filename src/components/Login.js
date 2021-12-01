@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import cookies from 'react-cookies';
 
 
 export default function Login(props) {
     const { deployed_uri } = props
+    const [loginErrorMessage, setLoginErrorMessage] = useState('')
+    const [signupErrorMessage, setSignupErrorMessage] = useState('')
+
     const headers = {
         'Content-Type': 'application/json',
     }
@@ -16,11 +19,8 @@ export default function Login(props) {
         axios.post(`${deployed_uri}/login`, body, headers)
             .then(res => {
                 cookies.save('access_token', res.data.token, { path: '/' });
-                if (res.status === 400) {
-                    res.json('Email already exists')
-                }
             }
-            ).catch(err => err)
+            ).catch(err => setLoginErrorMessage('User not found'))
     }
 
     const handleSubmitSignup = (e) => {
@@ -31,11 +31,8 @@ export default function Login(props) {
         axios.post(`${deployed_uri}/signup`, body, headers)
             .then(res => {
                 cookies.save('access_token', res.data.token, { path: '/' });
-                if (res.status === 400) {
-                    res.json('Email already exists')
-                }
             })
-            .catch(err => err)
+            .catch(err => setSignupErrorMessage('Email already exists'))
     }
     return (
         <div className='loginWrapper'>
@@ -45,6 +42,7 @@ export default function Login(props) {
                 <div className='inputWrapper'>
                     <label htmlFor='email'>Email</label>
                     <input type='text' id="email" placeholder='Enter your email' />
+                    {loginErrorMessage !== '' ? <p style={{ fontSize: '10px', color: 'red' }}>{loginErrorMessage}</p> : ''}
                 </div>
                 <button type='submit'>Login</button>
             </form>
@@ -55,6 +53,8 @@ export default function Login(props) {
                 <div className='inputWrapper'>
                     <label htmlFor='email'>Email</label>
                     <input type='text' id="email" placeholder='Enter your email' />
+                    {signupErrorMessage !== '' ? <p style={{ fontSize: '10px', color: 'red' }}>{signupErrorMessage}</p> : ''}
+
                 </div>
                 <button type='submit'>Register</button>
             </form>

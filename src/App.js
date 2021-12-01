@@ -94,7 +94,7 @@ function App() {
 
   useEffect(() => {
     getData()
-  }, [data])
+  }, [])
 
 
 
