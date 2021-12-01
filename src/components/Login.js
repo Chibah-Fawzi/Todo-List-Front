@@ -8,7 +8,6 @@ export default function Login(props) {
     const headers = {
         'Content-Type': 'application/json',
     }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const body = {

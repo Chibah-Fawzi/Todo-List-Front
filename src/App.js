@@ -10,7 +10,7 @@ function App() {
   if (process.env.NODE_ENV === 'development') {
     deployed_uri = 'http://localhost:8888'
   } else {
-    deployed_uri = process.env.DEPLOYED_URI
+    deployed_uri = "https://app-to-do-assessment.herokuapp.com"
   }
   // Data state handler
   const [data, setData] = useState([])
