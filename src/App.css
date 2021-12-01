@@ -1,0 +1,109 @@
+:root {
+  --bg: #1f1f1f;
+  --main: #de4c4a;
+}
+* {
+  overflow-x: hidden;
+}
+body {
+  background-color: var(--bg);
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container h1 {
+  text-transform: uppercase;
+  color: var(--main);
+}
+
+button {
+  background-color: var(--main);
+  padding: 15px;
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  min-width: 140px;
+  margin: 20px 0;
+  cursor: pointer;
+  color: #fff;
+}
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #807b7b56;
+  padding: 10vh;
+  border-radius: 25px;
+  align-items: center;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.formWrapper .inputWrapper {
+  margin: 20px 0;
+  justify-content: space-between;
+}
+.inputWrapper input {
+  background: none;
+  border: 1px solid var(--main);
+  color: #fff;
+  outline: none;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 0 20px;
+  width: 20vw;
+  height: 5vh;
+}
+
+.todoListWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+.checkboxWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border-bottom: 2px solid #807b7b56;
+  padding: 15px 0;
+}
+.checkboxWrapper div {
+  display: flex;
+  justify-content: space-around;
+}
+.todoList li {
+  display: flex;
+  justify-content: space-between;
+}
+.todoList span {
+  font-size: 10px;
+  color: #807b7b;
+  position: absolute;
+  right: 20px;
+}
+
+.checkboxWrapper input:checked ~ label {
+  text-decoration: line-through;
+}
+
+.loginWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+span {
+  margin: 5vh 0;
+}
