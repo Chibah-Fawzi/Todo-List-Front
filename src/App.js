@@ -6,12 +6,12 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Login from './components/Login'
 
 function App() {
-  let deployed_uri
-  if (process.env.NODE_ENV === 'development') {
-    deployed_uri = 'http://localhost:8888'
-  } else {
-    deployed_uri = "https://app-to-do-assessment.herokuapp.com"
-  }
+  var deployed_uri = "https://app-to-do-assessment.herokuapp.com"
+  // if (process.env.NODE_ENV === 'development') {
+  //   deployed_uri = 'http://localhost:8888'
+  // } else {
+  //   deployed_uri = "https://app-to-do-assessment.herokuapp.com"
+  // }
   // Data state handler
   const [data, setData] = useState([])
   const [addPost, setAddPost] = useState({
