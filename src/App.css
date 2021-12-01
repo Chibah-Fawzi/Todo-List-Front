@@ -21,6 +21,13 @@ li {
   align-items: center;
 }
 
+nav a {
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  cursor: pointer;
+}
+
 .container h1 {
   text-transform: uppercase;
   color: var(--main);

@@ -125,11 +125,15 @@ function App() {
     );
     setItems(items)
   }
-
+  const signOut = (e) => {
+    e.preventDefault();
+    cookies.remove('access_token', { path: '/' })
+  }
   return (
     <div className="App">
       {!token ? <Login deployed_uri={deployed_uri} /> :
         <div className='container'>
+          <nav><a onClick={(e) => signOut(e)}>Sign Out</a></nav>
           <h1>To do app</h1>
           <button onClick={(e) => handleToggle(e)}>Add a new task</button>
           {toggle ?
