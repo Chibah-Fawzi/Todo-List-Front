@@ -43,8 +43,8 @@ function App() {
 
     axios.get("https://app-to-do-assessment.herokuapp.com/todos", headers)
       .then(res => {
-        setLoading(false)
         setData(res.data)
+        setLoading(false)
       })
       .catch(err => {
         console.log(err)
@@ -176,7 +176,7 @@ function App() {
                         > */}
             <ul className='todoList'>
               {!loading ?
-                [data].map((e, i) => {
+                data.map((e, i) => {
                   return (
                     <li key={i} className='checkboxWrapper'>
                       <div>
