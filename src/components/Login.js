@@ -16,12 +16,13 @@ export default function Login(props) {
         }
         axios.post(`${deployed_uri}/login`, body, headers)
             .then(res => {
-                console.log(res.data);
-                // cookies.save('access_token', res.data.token, { path: '/' });
+                console.log(res.data.token);
+                cookies.save('access_token', res.data.token, { path: '/' });
                 // window.location.reload();
             }
             ).catch(err => err)
     }
+
     const handleSubmitSignup = (e) => {
         e.preventDefault();
         const body = {
@@ -39,7 +40,7 @@ export default function Login(props) {
         <div className='loginWrapper'>
             <h1>Login</h1>
 
-            <form onSubmit={(e) => handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 <div className='inputWrapper'>
                     <label htmlFor='email'>Email</label>
                     <input type='text' id="email" placeholder='Enter your email' />
@@ -49,7 +50,7 @@ export default function Login(props) {
 
             <span>OR</span>
             <p>No account ? Register here!</p>
-            <form onSubmit={handleSubmitSignup}>
+            <form onSubmit={(e) => handleSubmitSignup(e)}>
                 <div className='inputWrapper'>
                     <label htmlFor='email'>Email</label>
                     <input type='text' id="email" placeholder='Enter your email' />
