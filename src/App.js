@@ -48,7 +48,6 @@ function App() {
         setLoading(false)
       })
       .catch(err => {
-        console.log(err)
         setError(true)
 
       })
@@ -65,12 +64,10 @@ function App() {
 
     axios.post(`${deployed_uri}/todos`, addPost, headers)
       .then(res => {
-        console.log(res.data)
         setPostLoading(false)
         setSuccess(true)
       })
       .catch(err => {
-        console.log(err)
         setError(true)
 
       })
