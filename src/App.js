@@ -41,7 +41,7 @@ function App() {
     setLoading(true)
     setError(false)
 
-    axios.get(`${deployed_uri}/todos`, headers)
+    axios.get("https://app-to-do-assessment.herokuapp.com/todos", headers)
       .then(res => {
         setLoading(false)
         setData(res.data)
@@ -91,11 +91,6 @@ function App() {
     })
   }
 
-  const sendMail = () => {
-    if (data.data !== new Date().toISOString().slice(0, 10)) {
-      console.log(new Date().toISOString().slice(0, 10))
-    }
-  }
 
   useEffect(() => {
     getData()
@@ -103,6 +98,11 @@ function App() {
 
 
 
+  const sendMail = () => {
+    if (data.data !== new Date().toISOString().slice(0, 10)) {
+      console.log(new Date().toISOString().slice(0, 10))
+    }
+  }
   const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
@@ -110,7 +110,6 @@ function App() {
 
     return result;
   };
-
 
   const onDragEnd = (result) => {
     // dropped outside the list
@@ -128,7 +127,7 @@ function App() {
 
   return (
     <div className="App">
-      {token ? <Login deployed_uri={deployed_uri} /> :
+      {!token ? <Login deployed_uri={deployed_uri} /> :
         <div className='container'>
           <h1>To do app</h1>
           <button onClick={(e) => handleToggle(e)}>Add a new task</button>
