@@ -128,7 +128,7 @@ function App() {
 
   return (
     <div className="App">
-      {!token ? <Login deployed_uri={deployed_uri} /> :
+      {token ? <Login deployed_uri={deployed_uri} /> :
         <div className='container'>
           <h1>To do app</h1>
           <button onClick={(e) => handleToggle(e)}>Add a new task</button>
