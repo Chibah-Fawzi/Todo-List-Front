@@ -13,7 +13,7 @@ export default function Login(props) {
         const body = {
             email: e.target.email.value
         }
-        axios.post(`${deployed_uri}/login`, body, headers)
+        axios.post("https://app-to-do-assessment.herokuapp.com/login", body, headers)
             .then(res => {
                 cookies.save('access_token', res.data.token, { path: '/' });
                 // window.location.reload();
@@ -26,7 +26,7 @@ export default function Login(props) {
         const body = {
             email: e.target.email.value
         }
-        axios.post(`${deployed_uri}/signup`, body, headers)
+        axios.post("https://app-to-do-assessment.herokuapp.com/signup", body, headers)
             .then(res => {
                 cookies.save('access_token', res.data.token, { path: '/' });
                 // window.location.reload();

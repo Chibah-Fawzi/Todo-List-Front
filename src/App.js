@@ -41,7 +41,7 @@ function App() {
     setLoading(true)
     setError(false)
 
-    axios.get(`${deployed_uri}/todos`, headers)
+    axios.get("https://app-to-do-assessment.herokuapp.com/todos", headers)
       .then(res => {
         setLoading(false)
         setData(res?.data)
@@ -62,7 +62,7 @@ function App() {
     setError(false)
     setSuccess(false)
 
-    axios.post(`${deployed_uri}/todos`, addPost, headers)
+    axios.post("https://app-to-do-assessment.herokuapp.com/todos", addPost, headers)
       .then(res => {
         console.log(res.data)
         setPostLoading(false)
