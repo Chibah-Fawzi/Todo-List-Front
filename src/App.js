@@ -44,7 +44,7 @@ function App() {
     axios.get(`${deployed_uri}/todos`, headers)
       .then(res => {
         setLoading(false)
-        setData(res.data)
+        setData(res?.data)
       })
       .catch(err => {
         console.log(err)
@@ -190,7 +190,6 @@ function App() {
                       <p>{e.description}</p>
                     </li>)
                 })
-
                 : <p>Loading data...</p>}
             </ul>
             {/* </div>
